@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class UserGenerator {
+public class BdInteraction {
     public static Connection getConnection() throws SQLException {
         final Connection connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/app", "app", "pass");
@@ -63,7 +63,7 @@ public class UserGenerator {
         String deleteCards = "DELETE FROM cards; ";
         String deleteAuthCodes = "DELETE FROM auth_codes; ";
         String deleteUsers = "DELETE FROM users; ";
-        try (var conn = UserGenerator.getConnection();
+        try (var conn = BdInteraction.getConnection();
              var deleteCardsStmt = conn.createStatement();
              var deleteAuthCodesStmt = conn.createStatement();
              var deleteUsersStmt = conn.createStatement();
